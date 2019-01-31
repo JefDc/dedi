@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <table class="table">
+                    <thead class="thead-dark text-center">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Salle</th>
+                        <th scope="col">Probleme</th>
+                        <th scope="col">Déscription</th>
+                        <th scope="col">remarques</th>
+                        <th scope="col">Demandée le</th>
+                        <th scope="col">Suivi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for intervention in interventions %}
+                    <tr class="text-center">
+                        <th scope="row"><a href="{{ path('validate', {'intervention': intervention.id}) }}">Voir</a></th>
+                        <td>{{ intervention.id }}</td>
+                        <td>{{ intervention.officeNumber }}</td>
+                        <td>{{ intervention.problem.type }}</td>
+                        <td>{{ intervention.description }}</td>
+                        <td>{{ intervention.pc }}</td>
+                        <td>{{ intervention.date|date('d/m/Y') }}</td>
+                        <td>{{ intervention.follow }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

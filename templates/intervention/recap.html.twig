@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="m-5">Récapitulatif</h2>
+            </div>
+        </div>
+        {{ form_start(form, {'action': path('save'), 'methode': 'POST'}) }}
+            {{ form_errors(form) }}
+            <div style="pointer-events: none">
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="exampleInputEmail1">Votre nom :</label>
+                        {{ form_widget(form.name) }}
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="exampleInputPassword1">Bureau n° :</label>
+                        {{ form_widget(form.officeNumber) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-check text-right col-6">
+                        <label class="form-check-label" for="exampleCheck1">Votre problème concerne :</label>
+                    </div>
+                    <div class="form-group form-check text-left col-6">
+                        {{ form_widget(form.problem) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="exampleInputPassword1">Éventuellement, saississez le ou les numéro(s) d'ordinateur(s) qui vous pose(nt) un problème :</label>
+                    </div>
+                    <div class="form-group form-check text-left col-6">
+                        {{ form_widget(form.pc) }}
+                    </div>
+                </div>
+                <div class="form-group text-left">
+                    <label for="exampleInputPassword1">Décrivez précisémment votre problème</label>
+                    {{ form_widget(form.description) }}
+                </div>
+            </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary col-12">Je confirme ma demande d'intervention</button>
+                </div>
+        {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
